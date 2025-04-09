@@ -7,7 +7,7 @@ export default async function MateriPage() {
   const { categories, error } = await getCategories();
 
   return (
-    <section className="mt-24 px-4 md:px-16 lg:px-32 py-16 bg-gray-50">
+    <section>
       <div className="container mx-auto text-center">
         <p className="text-emerald-600 text-lg font-semibold mb-3" data-aos="fade-up">
           KATEGORI
