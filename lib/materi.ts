@@ -14,7 +14,7 @@ export async function getMateris() {
     });
 
     // Convert BigInt IDs to strings for frontend compatibility
-    const serializedMateris = materis.map((materi) => ({
+    const serializedMateris = materis.map((materi: any) => ({
       ...materi,
       id: materi.id.toString(),
       category_id: materi.category_id.toString(),
@@ -46,7 +46,7 @@ export async function getMaterisByCategory(categoryId: string) {
     });
 
     // Convert BigInt IDs to strings for frontend compatibility
-    const serializedMateris = materis.map((materi) => ({
+    const serializedMateris = materis.map((materi: any) => ({
       ...materi,
       id: materi.id.toString(),
       category_id: materi.category_id.toString(),
@@ -96,15 +96,15 @@ export async function getMateriById(id: string) {
         ...materi.categories,
         id: materi.categories.id.toString(),
       },
-      quizzes: materi.quizzes.map((quiz) => ({
+      quizzes: materi.quizzes.map((quiz: any) => ({
         ...quiz,
         id: quiz.id.toString(),
         materi_id: quiz.materi_id.toString(),
-        questions: quiz.questions.map((question) => ({
+        questions: quiz.questions.map((question: any) => ({
           ...question,
           id: question.id.toString(),
           quiz_id: question.quiz_id.toString(),
-          options: question.options.map((option) => ({
+          options: question.options.map((option: any) => ({
             ...option,
             id: option.id.toString(),
             question_id: option.question_id.toString(),

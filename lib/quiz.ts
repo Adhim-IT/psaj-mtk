@@ -23,7 +23,7 @@ export async function getQuizzes() {
     });
 
     // Convert BigInt IDs to strings for frontend compatibility
-    const serializedQuizzes = quizzes.map((quiz) => ({
+    const serializedQuizzes = quizzes.map((quiz: any) => ({
       ...quiz,
       id: quiz.id.toString(),
       materi_id: quiz.materi_id.toString(),
@@ -36,7 +36,7 @@ export async function getQuizzes() {
           id: quiz.materis.categories.id.toString(),
         },
       },
-      questions: quiz.questions.map((question) => ({
+      questions: quiz.questions.map((question: any) => ({
         ...question,
         id: question.id.toString(),
       })),
@@ -87,11 +87,11 @@ export async function getQuizById(id: string) {
           id: quiz.materis.categories.id.toString(),
         },
       },
-      questions: quiz.questions.map((question) => ({
+      questions: quiz.questions.map((question: any) => ({
         ...question,
         id: question.id.toString(),
         quiz_id: question.quiz_id.toString(),
-        options: question.options.map((option) => ({
+        options: question.options.map((option: any) => ({
           ...option,
           id: option.id.toString(),
           question_id: option.question_id.toString(),

@@ -11,7 +11,7 @@ export async function getCategories() {
     });
 
     // Convert BigInt IDs to strings for frontend compatibility
-    const serializedCategories = categories.map((category) => ({
+    const serializedCategories = categories.map((category: any) => ({
       ...category,
       id: category.id.toString(),
     }));

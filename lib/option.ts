@@ -23,7 +23,7 @@ export async function getOptionsByQuestionId(questionId: string) {
     });
 
     // Convert BigInt IDs to strings
-    const serializedOptions = options.map((option) => ({
+    const serializedOptions = options.map((option: any) => ({
       ...option,
       id: option.id.toString(),
       question_id: option.question_id.toString(),
