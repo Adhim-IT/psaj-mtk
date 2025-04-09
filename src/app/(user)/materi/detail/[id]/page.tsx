@@ -1,12 +1,14 @@
-import { getMateriById } from '@/lib/materi';
-import Link from 'next/link';
-import { notFound } from 'next/navigation';
+import { getMateriById } from "@/lib/materi";
+import Link from "next/link";
+import { notFound } from "next/navigation";
 
 interface MateriDetailPageProps {
   params: Promise<{ id: string }>;
 }
 
-export default async function MateriDetailPage({ params }: MateriDetailPageProps) {
+export default async function MateriDetailPage({
+  params,
+}: MateriDetailPageProps) {
   // Await the params object before accessing its properties
   const resolvedParams = await params;
   const id = resolvedParams.id;
@@ -29,7 +31,10 @@ export default async function MateriDetailPage({ params }: MateriDetailPageProps
             Materi
           </Link>
           <span className="mx-2">/</span>
-          <Link href={`/materi/${materi.category_id}`} className="hover:text-amber-500">
+          <Link
+            href={`/materi/${materi.category_id}`}
+            className="hover:text-amber-500"
+          >
             {materi.categories.name}
           </Link>
           <span className="mx-2">/</span>
@@ -37,11 +42,16 @@ export default async function MateriDetailPage({ params }: MateriDetailPageProps
         </div>
 
         {/* Title */}
-        <h1 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4">{materi.title}</h1>
+        <h1 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4">
+          {materi.title}
+        </h1>
 
         {/* Category Badge */}
         <div className="mb-6">
-          <Link href={`/materi/${materi.category_id}`} className="inline-block px-3 py-1 bg-amber-100 text-amber-700 rounded-full text-sm font-medium hover:bg-amber-200 transition-colors duration-300">
+          <Link
+            href={`/materi/${materi.category_id}`}
+            className="inline-block px-3 py-1 bg-amber-100 text-amber-700 rounded-full text-sm font-medium hover:bg-amber-200 transition-colors duration-300"
+          >
             {materi.categories.name}
           </Link>
         </div>
@@ -54,13 +64,25 @@ export default async function MateriDetailPage({ params }: MateriDetailPageProps
         {/* Quizzes Section */}
         {materi.quizzes && materi.quizzes.length > 0 && (
           <div className="mt-12 border-t pt-8">
-            <h2 className="text-2xl font-bold text-gray-800 mb-6">Quiz Terkait</h2>
+            <h2 className="text-2xl font-bold text-gray-800 mb-6">
+              Quiz Terkait
+            </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              {materi.quizzes.map((quiz) => (
-                <div key={quiz.id} className="bg-white border border-amber-200 rounded-lg p-4 hover:shadow-md transition-shadow duration-300">
-                  <h3 className="text-lg font-semibold text-gray-800 mb-2">{quiz.title}</h3>
-                  <p className="text-gray-600 mb-4">{quiz.questions.length} Pertanyaan</p>
-                  <Link href={`/quiz/${quiz.id}`} className="inline-block px-4 py-2 bg-amber-500 text-white rounded-full hover:bg-amber-600 transition-colors duration-300">
+              {materi.quizzes.map((quiz: any) => (
+                <div
+                  key={quiz.id}
+                  className="bg-white border border-amber-200 rounded-lg p-4 hover:shadow-md transition-shadow duration-300"
+                >
+                  <h3 className="text-lg font-semibold text-gray-800 mb-2">
+                    {quiz.title}
+                  </h3>
+                  <p className="text-gray-600 mb-4">
+                    {quiz.questions.length} Pertanyaan
+                  </p>
+                  <Link
+                    href={`/quiz/${quiz.id}`}
+                    className="inline-block px-4 py-2 bg-amber-500 text-white rounded-full hover:bg-amber-600 transition-colors duration-300"
+                  >
                     Mulai Quiz
                   </Link>
                 </div>
