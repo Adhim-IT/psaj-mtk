@@ -22,7 +22,7 @@ export default async function MateriDetailPage({
     <div className="container mx-auto px-4 py-12">
       <div className="max-w-4xl mx-auto">
         {/* Breadcrumb */}
-        <div className="flex items-center text-sm text-gray-500 mb-6">
+        <div className="flex items-center text-sm text-gray-500 dark:text-gray-400 mb-6">
           <Link href="/" className="hover:text-amber-500">
             Beranda
           </Link>
@@ -38,11 +38,11 @@ export default async function MateriDetailPage({
             {materi.categories.name}
           </Link>
           <span className="mx-2">/</span>
-          <span className="text-gray-700">{materi.title}</span>
+          <span className="text-gray-700 dark:text-gray-300">{materi.title}</span>
         </div>
 
         {/* Title */}
-        <h1 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4">
+        <h1 className="text-3xl md:text-4xl font-bold text-gray-800 dark:text-gray-100 mb-4">
           {materi.title}
         </h1>
 
@@ -50,33 +50,33 @@ export default async function MateriDetailPage({
         <div className="mb-6">
           <Link
             href={`/materi/${materi.category_id}`}
-            className="inline-block px-3 py-1 bg-amber-100 text-amber-700 rounded-full text-sm font-medium hover:bg-amber-200 transition-colors duration-300"
+            className="inline-block px-3 py-1 bg-amber-100 dark:bg-amber-900 text-amber-700 dark:text-amber-200 rounded-full text-sm font-medium hover:bg-amber-200 dark:hover:bg-amber-800 transition-colors duration-300"
           >
             {materi.categories.name}
           </Link>
         </div>
 
         {/* Content */}
-        <div className="prose prose-amber max-w-none">
+        <div className="prose prose-amber dark:prose-invert max-w-none">
           <div dangerouslySetInnerHTML={{ __html: materi.content }} />
         </div>
 
         {/* Quizzes Section */}
         {materi.quizzes && materi.quizzes.length > 0 && (
-          <div className="mt-12 border-t pt-8">
-            <h2 className="text-2xl font-bold text-gray-800 mb-6">
+          <div className="mt-12 border-t dark:border-gray-700 pt-8">
+            <h2 className="text-2xl font-bold text-gray-800 dark:text-gray-100 mb-6">
               Quiz Terkait
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               {materi.quizzes.map((quiz: any) => (
                 <div
                   key={quiz.id}
-                  className="bg-white border border-amber-200 rounded-lg p-4 hover:shadow-md transition-shadow duration-300"
+                  className="bg-white dark:bg-gray-800 border border-amber-200 dark:border-amber-900 rounded-lg p-4 hover:shadow-md transition-shadow duration-300"
                 >
-                  <h3 className="text-lg font-semibold text-gray-800 mb-2">
+                  <h3 className="text-lg font-semibold text-gray-800 dark:text-gray-100 mb-2">
                     {quiz.title}
                   </h3>
-                  <p className="text-gray-600 mb-4">
+                  <p className="text-gray-600 dark:text-gray-300 mb-4">
                     {quiz.questions.length} Pertanyaan
                   </p>
                   <Link
